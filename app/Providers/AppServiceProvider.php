@@ -21,10 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // View::share('db_connected', false); // Nonaktifkan pengecekan database otomatis saat boot agar Vercel tidak crash
-
-        // Vercel /tmp storage fix for Serverless
-        if (env('VERCEL')) {
+        if (config('app.env') === 'production') {
             $viewPath = '/tmp/storage/framework/views';
             if (!is_dir($viewPath)) {
                 mkdir($viewPath, 0777, true);
