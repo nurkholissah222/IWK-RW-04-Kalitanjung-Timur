@@ -30,5 +30,14 @@ class AppServiceProvider extends ServiceProvider
         }
 
         View::share('db_connected', $dbConnected);
+
+        // Vercel /tmp storage fix for Serverless
+        if (env('VERCEL')) {
+            $viewPath = '/tmp/storage/framework/views';
+            if (!is_dir($viewPath)) {
+                mkdir($viewPath, 0777, true);
+            }
+            config(['view.compiled' => $viewPath]);
+        }
     }
 }

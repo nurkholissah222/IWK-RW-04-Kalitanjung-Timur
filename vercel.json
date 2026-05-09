@@ -1,0 +1,26 @@
+{
+    "version": 2,
+    "framework": "laravel",
+    "functions": {
+        "api/*.php": {
+            "runtime": "vercel-php@0.7.5"
+        }
+    },
+    "routes": [
+        {
+            "src": "/(css|js|images|favicon.ico|robots.txt)(.*)",
+            "dest": "/public/$1$2"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/public/index.php"
+        }
+    ],
+    "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "false",
+        "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "cookie",
+        "CACHE_DRIVER": "array"
+    }
+}
