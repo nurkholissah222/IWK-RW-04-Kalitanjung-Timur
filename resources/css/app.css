@@ -1,0 +1,160 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Theme Variables */
+:root {
+    --bg-body: #020617;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --bg-sidebar: #020617;
+    --bg-card: #0f172a;
+    --bg-input: #0f172a;
+    --text-input: #f8fafc;
+    --border-color: rgba(255, 255, 255, 0.05);
+    --border-input: rgba(255, 255, 255, 0.1);
+    --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --glass-bg: rgba(15, 23, 42, 0.8);
+    --hover-bg: rgba(255, 255, 255, 0.05);
+}
+
+body.light-mode {
+    --bg-body: #f8fafc; /* Slate 50 */
+    --text-main: #0f172a; /* Slate 900 */
+    --text-muted: #64748b; /* Slate 500 */
+    --bg-sidebar: #ffffff;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --text-input: #0f172a;
+    --border-color: rgba(0, 0, 0, 0.05);
+    --border-input: rgba(0, 0, 0, 0.1);
+    --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --hover-bg: rgba(0, 0, 0, 0.03);
+}
+
+/* Global Transitions */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Glass Components */
+.glass, .glass-dark {
+    background-color: var(--glass-bg) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-card) !important;
+}
+
+/* Global Theming */
+body {
+    background-color: var(--bg-body) !important;
+    color: var(--text-main) !important;
+    font-size: 1.05rem !important;
+}
+
+/* Sidebar Override */
+aside {
+    background-color: var(--bg-sidebar) !important;
+    border-right-color: var(--border-color) !important;
+}
+
+/* Containers & Cards */
+.bg-slate-950, .bg-slate-900, .bg-slate-800, .bg-white\/5 {
+    background-color: var(--bg-card) !important;
+}
+
+/* Body level bg-slate-950 fix */
+body .bg-slate-950.min-h-screen {
+    background-color: var(--bg-body) !important;
+}
+
+/* Text Colors */
+h1, h2, h3, h4, h5, h6, p, span, td, th, label, div:not(.no-theme-text) {
+    color: var(--text-main) !important;
+}
+
+/* Muted Text */
+.text-slate-400, .text-slate-500, .text-slate-300 {
+    color: var(--text-muted) !important;
+}
+
+/* Light Mode Specific Overrides for better contrast */
+body.light-mode .text-indigo-300, 
+body.light-mode .text-indigo-400 {
+    color: #4f46e5 !important; /* Indigo 600 */
+}
+
+body.light-mode .bg-indigo-600\/20 {
+    background-color: rgba(79, 70, 229, 0.1) !important;
+}
+
+/* Forms */
+input, select, textarea {
+    background-color: var(--bg-input) !important;
+    color: var(--text-input) !important;
+    border: 1px solid var(--border-input) !important;
+}
+
+select option {
+    background-color: var(--bg-input) !important;
+    color: var(--text-input) !important;
+}
+
+/* Table Specifics */
+table thead tr {
+    background-color: var(--hover-bg) !important;
+}
+
+table tbody tr:hover {
+    background-color: var(--hover-bg) !important;
+}
+
+.divide-slate-700\/30 {
+    border-color: var(--border-color) !important;
+}
+
+/* Nominal Layout Fix */
+.nowrap-nominal {
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: inherit;
+}
+
+/* Fix for Sidebar active links */
+.bg-indigo-600 {
+    background-color: #4f46e5 !important;
+    color: #ffffff !important;
+}
+
+.bg-indigo-600 * {
+    color: #ffffff !important;
+}
+
+/* Theme Toggle Button Specifics */
+body.light-mode #theme-toggle {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: #0f172a !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode #theme-toggle span {
+    color: #0f172a !important;
+}
+
+/* Profile / Branding Fix */
+aside .text-white {
+    color: var(--text-main) !important;
+}
+
+/* Print Utility */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
