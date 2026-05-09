@@ -21,15 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $dbConnected = false;
-        try {
-            DB::connection()->getPdo();
-            $dbConnected = true;
-        } catch (\Exception $e) {
-            $dbConnected = false;
-        }
-
-        View::share('db_connected', $dbConnected);
+        // View::share('db_connected', false); // Nonaktifkan pengecekan database otomatis saat boot agar Vercel tidak crash
 
         // Vercel /tmp storage fix for Serverless
         if (env('VERCEL')) {
