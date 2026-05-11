@@ -314,14 +314,12 @@
                         </div>
                         <div class="flex-shrink-0">
                             @php
-                                $path = Auth::user()->profile_photo_path;
-                                $hasFile = $path && file_exists(storage_path('app/public/' . $path));
-                                $finalSrc = $hasFile 
-                                    ? url('storage-file/' . $path) . '?v=' . time()
-                                    : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=4f46e5&color=fff';
+                                $finalSrc = Auth::user()->profile_photo_path 
+                                    ? asset('storage/' . Auth::user()->profile_photo_path) . '?v=' . time()
+                                    : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=4f46e5&color=fff&bold=true';
                             @endphp
                             <img src="{{ $finalSrc }}" 
-                                 class="w-10 h-10 rounded-full object-cover border border-white/10 shadow-sm">
+                                 class="w-10 h-10 rounded-full object-cover border-2 border-white/20 shadow-lg group-hover:border-indigo-500 transition-all duration-300">
                         </div>
                     </div>
                     @endauth

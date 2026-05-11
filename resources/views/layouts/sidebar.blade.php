@@ -7,9 +7,9 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
             </div>
-            <div>
-                <h1 class="font-black text-xl tracking-tight">IWK RW 04</h1>
-                <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">
+            <div class="flex-1 min-w-0">
+                <h1 class="font-black tracking-tight whitespace-nowrap" style="font-size: clamp(1rem, 4vw, 1.5rem); overflow: visible;">IWK RW 04</h1>
+                <p class="text-slate-500 text-[10px] font-bold uppercase tracking-widest truncate">
                     {{ $user->role === 'RW' ? 'Bendahara RW 04' : 'Bendahara RT.' . ($user->unit_rt ?? '00') }}
                 </p>
             </div>
@@ -17,7 +17,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="flex-1 px-4 space-y-2 py-4">
+    <nav class="flex-1 px-4 space-y-2 pt-10 pb-4">
         @php
             $dashboardRoute = $user->role === 'RW' ? 'dashboard.rw' : 'dashboard.rt';
         @endphp

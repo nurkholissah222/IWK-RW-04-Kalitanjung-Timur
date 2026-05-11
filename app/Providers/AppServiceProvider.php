@@ -28,5 +28,14 @@ class AppServiceProvider extends ServiceProvider
             }
             config(['view.compiled' => $viewPath]);
         }
+
+        // Global Database Connection Check
+        try {
+            DB::connection()->getPdo();
+            $db_connected = true;
+        } catch (\Exception $e) {
+            $db_connected = false;
+        }
+        View::share('db_connected', $db_connected);
     }
 }

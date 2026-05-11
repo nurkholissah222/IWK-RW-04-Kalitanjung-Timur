@@ -77,6 +77,10 @@ class ProfilRtController extends Controller
             // 3. Save path to database (path is already relative like 'profile_photos/filename.jpg')
             $profil->foto = $path;
             $profil->save();
+
+            // 4. Sinkronisasi Foto ke Tabel Users agar Navbar ikut berubah
+            $user->profile_photo_path = $path;
+            $user->save();
         }
 
         return redirect()->back()->with('success', 'Data Profil Pengurus berhasil diperbarui!');
@@ -93,6 +97,12 @@ class ProfilRtController extends Controller
             }
             $profil->foto = null;
             $profil->save();
+
+            // Sinkronisasi ke Tabel Users
+            $user = auth()->user();
+            $user->profile_photo_path = null;
+            $user->save();
+
             return redirect()->back()->with('success', 'Foto profil berhasil dihapus!');
         }
 
